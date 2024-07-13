@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
-import 'cart_page.dart';
+import 'view_cart/cart_page.dart';
 
 class NavigationPage extends StatefulWidget {
   const NavigationPage({super.key});
@@ -26,7 +26,12 @@ class _NavigationPageState extends State<NavigationPage> {
         shape: CircleBorder(),
         backgroundColor: Colors.orange,
 
-        onPressed: (){},
+        onPressed: (){
+          selectedIndex=0;
+          setState(() {
+
+          });
+        },
         child: Icon(Icons.home_filled,color: Colors.white,),
       ),
       bottomNavigationBar: BottomAppBar(

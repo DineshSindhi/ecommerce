@@ -1,6 +1,6 @@
 
 import 'package:ecommerce_app/data/model/product_model.dart';
-import 'package:ecommerce_app/presentation/screens/pages/item_detail_page.dart';
+import 'package:ecommerce_app/presentation/screens/pages/add_cart/item_detail_page.dart';
 import 'package:flutter/material.dart';
 
 class ProductPage extends StatelessWidget {
@@ -15,7 +15,7 @@ class ProductPage extends StatelessWidget {
     return Scaffold(
       body: InkWell(
         onTap: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ItemDetailPage(imgUrl: '${data.image}', pName: '${data.name}', pPrice: '${data.price}'),));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ItemDetailPage(productId:int.parse(data.id!),imgUrl: '${data.image}', pName: '${data.name}', pPrice: '${data.price}'),));
         },
         child: Container(
           width: 300,

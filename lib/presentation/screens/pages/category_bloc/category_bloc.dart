@@ -12,7 +12,7 @@ class CategoryBloc extends Bloc<CategoryEvents,CategoryState>{
     on<CategoryE>((event, emit) async {
       emit( CLoadingState());
       try{
-        dynamic data= await apiHelper.getApi(url: GetApiUrl.CATEGORY_URL,);
+        dynamic data= await apiHelper.getApi(url: ApiUrl.CATEGORY_URL,);
         List<CategoryModel>mCategory=[];
         for(Map<String,dynamic> each in data['data']){
           mCategory.add(CategoryModel.fromJson(each));

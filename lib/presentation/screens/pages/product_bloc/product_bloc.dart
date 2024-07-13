@@ -12,7 +12,7 @@ class ProductBloc extends Bloc<ProductEvents,ProductState>{
     on<ProductsE>((event, emit) async {
       emit( PLoadingState());
       try{
-        var mData= await apiHelper.postApi(url: GetApiUrl.PRODECT_URL,isHeader: true);
+        var mData= await apiHelper.postApi(url: ApiUrl.PRODUCT_URL,isHeader: true);
         var rawData=DataModel.fromJson(mData);
         emit(PLoadedState(dataModel: rawData));
       }catch(e){

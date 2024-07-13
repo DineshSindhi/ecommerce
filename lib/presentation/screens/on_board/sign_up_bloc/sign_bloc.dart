@@ -9,7 +9,7 @@ class SignupBloc extends Bloc<SignupEvents,SignupState>{
   SignupBloc({required this.apiHelper}):super(SInitState()){
     on<SignEvent>((event, emit) async {
       try{
-         var data=await apiHelper.postApi(url: GetApiUrl.REGISTRATION_URL,mapData: {'name': event.name, 'mobile_number': event.mobile_number, 'email': event.email, 'password': event.password},);
+         var data=await apiHelper.postApi(url: ApiUrl.REGISTRATION_URL,mapData: {'name': event.name, 'mobile_number': event.mobile_number, 'email': event.email, 'password': event.password},);
          var loginData=JsonResponse(status: data['status'], message: data['message'], token: data['tokan']);
          if(loginData.status!){
            emit(SLoadedState());

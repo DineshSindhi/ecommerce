@@ -12,7 +12,7 @@ class LoginBloc extends Bloc<LoginEvents,LoginState>{
     on<LoginEvent>((event, emit) async {
       emit(LoadingState());
       try{
-        var mData= await apiHelper.postApi(url: GetApiUrl.LOGIN_URL,mapData:{"email":event.email, "password":event.password},);
+        var mData= await apiHelper.postApi(url: ApiUrl.LOGIN_URL,mapData:{"email":event.email, "password":event.password},);
         var loginData=JsonResponse(status: mData['status'], message: mData['message'], token: mData['tokan']);
         if(loginData.status!){
           AppPrefs().setToken(loginData.token!);

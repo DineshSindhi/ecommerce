@@ -38,6 +38,7 @@ class ApiHelper{
     switch(response.statusCode){
       case 200 :{
         var mData=jsonDecode(response.body);
+
         return mData;
       }
       case 400:BadRequestError(errorMsg: response.toString());
