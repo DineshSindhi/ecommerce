@@ -19,7 +19,7 @@ class ViewCartModel {
  factory ViewCartModel.fromJson(Map<String, dynamic> json) {
     return ViewCartModel(
         id: json['id'],
-        productId: json['productId'],
+        productId: json['product_id'],
         name: json['name'],
         price: json['price'],
         quantity: json['quantity'],

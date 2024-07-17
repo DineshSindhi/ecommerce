@@ -45,9 +45,7 @@ class _SplashPageState extends State<SplashPage> {
       if(login!=''){
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NavigationPage(),));
       }else{
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => BlocProvider(
-            create: (context) => LoginBloc(apiHelper: ApiHelper()),
-            child: LoginScreen()),));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen(),));
       }
 
     });

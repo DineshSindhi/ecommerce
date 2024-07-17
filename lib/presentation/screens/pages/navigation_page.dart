@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/presentation/screens/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 import 'view_cart/cart_page.dart';
@@ -14,7 +15,7 @@ class _NavigationPageState extends State<NavigationPage> {
     HomePage(),
     Center(child: Text('Favorite'),),
     MyCartPage(),
-    Center(child: Text('Profile'),),
+    ProfilePage(),
   ];
   int selectedIndex=0;
   @override
