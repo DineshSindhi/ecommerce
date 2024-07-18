@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:ecommerce_app/presentation/screens/pages/decrement_quantity_bloc/decrement_quantity_event.dart';
 import 'package:ecommerce_app/presentation/screens/pages/decrement_quantity_bloc/decrement_quantity_state.dart';
 import 'package:ecommerce_app/presentation/screens/pages/delete_cart_bloc/delete_cart_bloc.dart';
@@ -26,6 +25,7 @@ class MyCartPage extends StatefulWidget {
 
 class _MyCartPageState extends State<MyCartPage> {
   bool isOrderPlacing = false;
+  bool isEmpty = false;
   num totalAmount = 0;
 
   @override
@@ -90,15 +90,15 @@ class _MyCartPageState extends State<MyCartPage> {
             BlocBuilder<ViewCartBloc, ViewCartState>(
               builder: (context, state) {
                 if (state is ViewCartLoadingState) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 } else if (state is ViewCartErrorState) {
-                  return Center(
-                    child: Text(state.msg),
-                  );
-                } else if (state is ViewCartLoadedState) {
-                   bool data= state.viewCartData.isNotEmpty;
+                  isEmpty=false;
+                  return Center(child: Lottie.asset('asset/lottie/cart_empty.json'));
+                }
+                else if (state is ViewCartLoadedState) {
+                  isEmpty=true;
                   getOrderAmount(state.viewCartData);
                   return state.viewCartData.isNotEmpty?ListView.builder(
                     shrinkWrap: true,
@@ -199,7 +199,9 @@ class _MyCartPageState extends State<MyCartPage> {
                                               DecrementQuantityBloc,
                                               DecrementQuantityState>(
                                             listener: (context, state) {
-                                              if (state is DecrementQuantityLoadedState) {}
+                                              if (state is DecrementQuantityLoadedState) {
+
+                                              }
                                             },
                                             child: Row(
                                               mainAxisAlignment:
@@ -246,12 +248,12 @@ class _MyCartPageState extends State<MyCartPage> {
                         ),
                       );
                     },
-                  ):Center(child: Text('Not'),);
+                  ):Center(child: Text('Cart Is Empty'),);
                 }
                 return Container();
               },
             ),
-            SizedBox(
+            isEmpty?SizedBox(
               height: 300,
               child: Container(
                 height: 100,
@@ -418,7 +420,7 @@ class _MyCartPageState extends State<MyCartPage> {
                   ],
                 ),
               ),
-            )
+            ):Container(),
           ],
         ));
   }
